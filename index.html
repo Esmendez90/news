@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    /> -->
+    <!-- Fontawesome cdn link -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
+      integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <!-- Custom Stylesheet -->
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <title>News</title>
+  </head>
+  <body>
+    <header>
+      <h1><a href="/">NEWS</a></h1>
+    </header>
+    <!-- Navbar -->
+    <div class="nav-bar">
+      <a href="/">Home</a>
+      <a href="/search.html">Search article</a>
+      <a href="/bycountry.html">Search by country</a>
+    </div>
+    <main>
+      <h2>Top Stories</h2>
+      <!-- Carousel -->
+      <section>
+        <div class="carousel">
+      
+          <a class="prev" onclick="plusSlides(-1)"
+            ><i class="fa-solid fa-angle-left"></i
+          ></a>
+          <a class="next" onclick="plusSlides(1)"
+            ><i class="fa-solid fa-angle-right"></i
+          ></a>
+        </div>
+      </section>
+
+      <!-- List of articles -->
+
+      <section>
+        <h2>More News</h2>
+        <ul>
+          <li>
+            <img
+              style="width: 30%"
+              src="https://png.pngtree.com/png-vector/20210604/ourmid/pngtree-gray-network-placeholder-png-image_3416659.jpg"
+            />
+            <div>
+              <p>Article title <span>Source</span></p>
+            </div>
+          </li>
+        </ul>
+      </section>
+    </main>
+    <footer>
+      <p>Designed by</p>
+      <a href="https://esmendez90.github.io/portfolio/" target="_blank"
+        ><img src="./images/logo.png" alt="EM icon"
+      /></a>
+    </footer>
+
+    <!-- JQuery -->
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Axios Content Delivery Network (CDN)-->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <!-- Bootstrap bundle -->
+    <!-- <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script> -->
+
+    <!-- Custom script -->
+    <script src="./script.js"></script>
+  </body>
+</html>
