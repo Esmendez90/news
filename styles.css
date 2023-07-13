@@ -13,7 +13,7 @@ a {
   color: black;
 }
 .nav-bar a {
-  padding: 10px;
+  padding: 8px;
 }
 .carousel {
   width: 100%;
@@ -61,9 +61,10 @@ a {
   font-size: 21px;
   background-color: #8080803b;
   margin-left: 5px;
-  transition: 0.6s ease;
+  transition: 0.3s ease;
   border-radius: 0 3px 3px 0;
   user-select: none;
+  z-index: 1;
 }
 .next {
   right: 0%;
