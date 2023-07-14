@@ -1,6 +1,7 @@
 body {
   letter-spacing: 1px;
   font-family: "Times New Roman", Times, serif;
+  margin: 0;
 }
 h1 {
   text-align: center;
@@ -8,14 +9,54 @@ h1 {
   padding: 1rem;
   margin: auto;
 }
+
 a {
   text-decoration: none;
   color: black;
 }
+.nav-bar {
+  position: absolute;
+  top: 120%;
+  width: 100%;
+  text-align: center;
+}
 .nav-bar a {
   padding: 8px;
 }
-.carousel {
+.form-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 47%;
+  transform: translate(0, 47%);
+}
+.form-container form {
+  display: inline-flex;
+}
+.form-container form input {
+  width: 16rem;
+    height: 2rem;
+}
+footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+footer p {
+  margin-bottom: 0;
+  margin-right: 10px;
+}
+footer img {
+  width: 75px;
+}
+
+/* =============================================================== */
+/*.carousel {
   width: 100%;
   max-height: 229px;
   position: relative;
@@ -31,12 +72,12 @@ a {
   height: 229px;
   max-height: 229px;
 }
-/* Name animation and duration */
+ Name animation and duration 
 .fade{
   animation-name: fade;
   animation-duration: 1s;
 }
-/* How the animation will occur */
+ How the animation will occur 
 @keyframes fade {
   from{opacity: .4;}
   to{opacity: 1;}
@@ -74,16 +115,4 @@ a {
 .next:hover {
   background-color: rgba(0, 0, 0, 0.8);
 }
-
-footer {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-footer p {
-  margin-bottom: 0;
-  margin-right: 10px;
-}
-footer img {
-  width: 75px;
-}
+*/
