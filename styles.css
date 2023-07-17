@@ -11,11 +11,17 @@ h1 {
   font-size: 40px;
   padding: 1rem;
   margin: auto;
+  transition: font-size 0.5s;
+  transition-timing-function: ease-in-out;
 }
 h1 p {
   margin: 0;
   margin-top: -5px;
   font-size: 24.5px;
+}
+
+h1:hover {
+  font-size: 60px;
 }
 
 a {
@@ -44,12 +50,22 @@ a {
 .form-container form {
   display: inline-flex;
   position: relative;
+  justify-content: center;
+  align-items: center;
 }
 .form-container form input {
   width: 20rem;
   height: 2.3rem;
   border: none;
+  font-size: 21.5px;
+  transition: height 0.8s;
+  letter-spacing: 0.8px;
 }
+.form-container form input:focus {
+  outline-color: #e91e63;
+  height: 3.3rem;
+}
+
 input,
 button {
   border-radius: 5px;
@@ -61,11 +77,13 @@ button {
   background-color: rgba(255, 255, 255, 0);
   margin-left: -10px;
   position: absolute;
-    right: 0;
-    top: 7px;
+  right: 0;
 }
-.fa-wand-magic-sparkles{
+.fa-wand-magic-sparkles {
   font-size: 24px;
+}
+.fa-wand-magic-sparkles:hover {
+  color:#e91e63;
 }
 footer {
   display: flex;
@@ -80,7 +98,7 @@ footer p {
   margin-right: 10px;
 }
 footer img {
-  width: 75px;
+  width: 62px;
 }
 
 /* =============================================================== */
