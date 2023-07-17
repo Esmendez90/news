@@ -6,6 +6,10 @@ body {
   margin: 0;
   background-color: #e91e63;
 }
+a {
+  text-decoration: none;
+  color: white;
+}
 h1 {
   text-align: center;
   font-size: 40px;
@@ -23,21 +27,24 @@ h1 p {
 h1:hover {
   font-size: 60px;
 }
-
-a {
-  text-decoration: none;
-  color: white;
+.text-intro {
+  margin: auto;
+  padding: 2rem;
 }
-.nav-bar {
-  position: absolute;
-  top: 120%;
-  width: 100%;
+.text-intro p {
+  /* display: flex;
+  width: 100vw; */
+  font-size: 18px;
+  font-weight: bolder;
+  justify-content: center;
+  align-items: center;
   text-align: center;
-  margin-top: 10px;
+  transform: translateY(25%);
+  /* position: absolute;
+  top: 25%;
+  transform: translate(0, 25%); */
 }
-.nav-bar a {
-  padding: 5px;
-}
+
 .form-container {
   width: 100%;
   display: flex;
@@ -57,9 +64,10 @@ a {
   width: 20rem;
   height: 2.3rem;
   border: none;
-  font-size: 21.5px;
+  font-size: 19.5px;
   transition: height 0.8s;
   letter-spacing: 0.8px;
+  color: #222121;
 }
 .form-container form input:focus {
   outline-color: #e91e63;
@@ -81,9 +89,28 @@ button {
 }
 .fa-wand-magic-sparkles {
   font-size: 24px;
+  transition: color 0.2s;
+  transition-timing-function: ease-in-out;
 }
 .fa-wand-magic-sparkles:hover {
-  color:#e91e63;
+  color: #e91e63;
+}
+.nav-bar {
+  position: absolute;
+  top: 120%;
+  width: 100%;
+  text-align: center;
+  margin-top: 10px;
+}
+.nav-bar a {
+  padding: 5px;
+  transition: font-size 0.1s, font-weight 0.1s, color 0.1s;
+  transition-timing-function: ease-in-out;
+}
+.nav-bar a:hover {
+  font-size: 17px;
+  font-weight: bold;
+  color: #222121;
 }
 footer {
   display: flex;
@@ -99,6 +126,32 @@ footer p {
 }
 footer img {
   width: 62px;
+}
+
+
+
+
+
+
+
+@media screen and (min-width: 412px) {
+  .text-intro p {
+    transform: translateY(100%);
+  }
+}
+
+@media screen and (min-width: 768px) {
+  h1 {
+    font-size: 60px;
+    transition: font-size 0.5s;
+    transition-timing-function: ease-in-out;
+  }
+  h1:hover{
+    font-size: 90px;
+  }
+  .text-intro {
+    padding: 6.5rem;
+  }
 }
 
 /* =============================================================== */

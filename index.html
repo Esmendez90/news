@@ -25,22 +25,34 @@
   <body>
     <header>
       <h1>
-        <a href="/">SPARK <br /><p>events</p></a>
+        <a href="/"
+          >SPARK <br />
+          <p>events</p></a
+        >
       </h1>
     </header>
 
     <main>
+      <div class="text-intro">
+        <p>Find attractions artists, sports, packages, plays and so on...</p>
+      </div>
       <div class="form-container">
         <form>
-          <input type="text" id="input-name" name="input-name" required />
+          <input
+            type="text"
+            id="input-name"
+            name="input-name"
+            placeholder="bon jovi"
+            required
+          />
           <button id="search-btn">
             <i class="fa-solid fa-wand-magic-sparkles"></i>
           </button>
         </form>
         <!-- Navbar -->
         <div class="nav-bar">
-          <a href="/">Home |</a>
-          <a href="/search.html">Search Event |</a>
+          <a href="/">Home</a><span>|</span>
+          <a href="/search.html">Search Event</a><span>|</span>
           <a href="/bycountry.html">By Country</a>
         </div>
       </div>
