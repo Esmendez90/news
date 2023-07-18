@@ -2,8 +2,6 @@ let btn = document.getElementById("search-btn");
 let inputName = document.getElementById("input-name");
 let apiKey = `0DsuAyGvECXLVAGtuUju6HSU98Eig6H3`;
 let keyword;
-let title;
-let imgUrl;
 
 btn.addEventListener("click", getInputName);
 
@@ -53,7 +51,7 @@ function handleClasses(attractions) {
 function handleAnimation() {
   $(".text-intro").addClass("hide");
   $(".form-container").addClass("move-form");
-  $("footer").addClass("alter-footer")
+  $("footer").addClass("alter-footer");
 
   setTimeout(function () {
     $(".results-text").empty();
@@ -72,6 +70,8 @@ function renderData(attractions) {
   for (let i = 0; i < attractions.length; i++) {
     $(".wrapper").append(`
     <div class="slides">
+    <button id=${attractions[i].id} class="see-more-btn">See more</button>
+
         <img src=${attractions[i].images[0].url} alt="photo of event">
         <div class="title-text">${attractions[i].name.toUpperCase()}
           <span><a href=${attractions[i].url} target="_blank">Tickets</a></span>
@@ -81,11 +81,32 @@ function renderData(attractions) {
   }
 }
 
+function getResultsById(id) {
+  console.log("Something happens here")
+  axios
+    .get(
+      `https://app.ticketmaster.com/discovery/v2/events.json?attractionId=${id}&apikey=${apiKey}`
+    )
+    .then((response) => {
+      console.log(response);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+}
+// Dynamic button, get results by Id
+$(document).on("click", ".see-more-btn", function (e) {
+  getResultsById(e.target.id);
+});
+
+// Footer animation handler
 $(window).scroll(function () {
   let content = $("footer");
   let scrollTop = $(window).scrollTop();
   content.css("opacity", 1 - scrollTop / 500);
 });
+
+
 
 // ===================== CAROUSEL ==============================
 // let slideIndex = 1;
