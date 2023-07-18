@@ -28,19 +28,31 @@ function getResults() {
         alert("No attraction, artist, or event found.");
       } else {
         console.log(response.data._embedded.attractions);
+
         handleAnimation();
-        renderData(response.data._embedded.attractions);
+        handleClasses(response.data._embedded.attractions);
       }
     })
     .catch((error) => {
       console.log(error);
     });
 }
+
+function handleClasses(attractions) {
+  if ($(".wrapper").hasClass("move-wrapper")) {
+    $(".wrapper").removeClass("move-wrapper");
+
+    setTimeout(function () {
+      renderData(attractions);
+    }, 100);
+  } else {
+    renderData(attractions);
+  }
+}
+
 function handleAnimation() {
   $(".text-intro").addClass("hide");
   $(".form-container").addClass("move-form");
-
-  let delayInMilliseconds = 1000;
 
   setTimeout(function () {
     $(".results-text").empty();
@@ -49,13 +61,12 @@ function handleAnimation() {
       .append(
         `<p>Results related to <strong><em>"${keyword}"</em></strong>.</p>`
       );
-  }, delayInMilliseconds);
+  }, 1000);
 }
 
-
 function renderData(attractions) {
-  $(".wrapper").empty();
   $(".wrapper").addClass("move-wrapper");
+  $(".wrapper").empty();
 
   for (let i = 0; i < attractions.length; i++) {
     $(".wrapper").append(`
