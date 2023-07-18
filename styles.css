@@ -29,20 +29,13 @@ h1:hover {
 }
 .text-intro {
   margin: auto;
-  padding: 2rem;
+  padding: 0 2rem;
+  transform: translateY(100%);
 }
 .text-intro p {
-  /* display: flex;
-  width: 100vw; */
-  font-size: 18px;
+  font-size: 17px;
   font-weight: bolder;
-  justify-content: center;
-  align-items: center;
   text-align: center;
-  transform: translateY(25%);
-  /* position: absolute;
-  top: 25%;
-  transform: translate(0, 25%); */
 }
 
 .form-container {
@@ -64,19 +57,14 @@ h1:hover {
   width: 20rem;
   height: 2.3rem;
   border: none;
-  font-size: 19.5px;
-  transition: height 0.8s;
+  font-size: 18.5px;
+  transition: height 0.5s;
   letter-spacing: 0.8px;
   color: #222121;
 }
 .form-container form input:focus {
   outline-color: #e91e63;
   height: 3.3rem;
-}
-
-input,
-button {
-  border-radius: 5px;
 }
 
 button {
@@ -95,6 +83,11 @@ button {
 .fa-wand-magic-sparkles:hover {
   color: #e91e63;
 }
+input,
+button,
+.slides img {
+  border-radius: 5px;
+}
 .nav-bar {
   position: absolute;
   top: 120%;
@@ -112,11 +105,40 @@ button {
   font-weight: bold;
   color: #222121;
 }
+.wrapper {
+  width: auto;
+  height: 0px;
+  background-color: green;
+  position: absolute;
+  bottom: 0;
+  transform: translateY(0);
+}
+/* slides */
+.slides {
+  position: relative;
+  margin: auto;
+  margin-bottom: 14px;
+}
+.slides img {
+  display: block;
+  margin: auto;
+  width: 92%;
+  height: 240px;
+}
+.title-text {
+  position: absolute;
+  bottom: 10%;
+  left: 6%;
+  width: 90%;
+  margin: auto;
+  font-size: 16px;
+  font-weight: bold;
+}
 footer {
   display: flex;
   align-items: center;
   justify-content: center;
-  position: absolute;
+  position: fixed;
   bottom: 0;
   width: 100%;
 }
@@ -128,16 +150,29 @@ footer img {
   width: 62px;
 }
 
-
-
-
-
-
-
-@media screen and (min-width: 412px) {
-  .text-intro p {
-    transform: translateY(100%);
-  }
+/* Dinamycally added attributes */
+/* hide text-intro container */
+.hide {
+  transition: transform 1s, opacity 1s;
+  transition-timing-function: ease-in-out;
+}
+.hide {
+  transform: translateY(0);
+  opacity: 0;
+}
+.move-form {
+  transition: top 1s;
+  transition-timing-function: ease-in-out;
+}
+.move-form {
+  top: 10%;
+}
+.move-wrapper {
+  transition: bottom 1s;
+  transition-timing-function: ease-in-out;
+}
+.move-wrapper{
+  bottom: 72%;
 }
 
 @media screen and (min-width: 768px) {
@@ -146,11 +181,8 @@ footer img {
     transition: font-size 0.5s;
     transition-timing-function: ease-in-out;
   }
-  h1:hover{
+  h1:hover {
     font-size: 90px;
-  }
-  .text-intro {
-    padding: 6.5rem;
   }
 }
 

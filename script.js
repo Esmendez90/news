@@ -7,12 +7,16 @@ let imgUrl;
 
 btn.addEventListener("click", getInputName);
 
-function getInputName (e) {
+function getInputName(e) {
   e.preventDefault();
-  keyword = inputName.value.trim();
-  console.log(keyword)
-}
 
+  keyword = inputName.value.trim();
+  if (keyword == "") {
+    alert("Enter the name of an attraction, artist, or event.");
+  } else {
+    getResults();
+  }
+}
 
 function getResults() {
   axios
@@ -20,25 +24,37 @@ function getResults() {
       `https://app.ticketmaster.com/discovery/v2/attractions.json?&keyword=${keyword}&apikey=${apiKey}`
     )
     .then((response) => {
-      console.log(response);
+      // console.log(response);
+      if (response.data.page.totalElements == "0") {
+        alert("No attraction, artist, or event found.");
+      } else {
+        // $(".text-intro").addClass("hide");
+        // $(".form-container").addClass("move-form");
+        console.log(response.data._embedded.attractions);
+        renderData(response.data._embedded.attractions);
+      }
+
       //   title = response.data.articles.title;
       //   imgUrl = response.data.articles.urlToImage;
-
-      //renderCarousel(response.data._embedded.events);
     })
     .catch((error) => {
       console.log(error);
     });
 }
-//getResults();
+function renderData(attractions) {
+  $(".text-intro").addClass("hide");
+  $(".form-container").addClass("move-form");
+  $(".wrapper").addClass("move-wrapper");
 
-
-
-
-
-
-
-
+  for (let i = 0; i < attractions.length; i++) {
+    $(".wrapper").append(`
+    <div class="slides">
+        <img src=${attractions[i].images[0].url} alt="article">
+        <div class="title-text">${attractions[i].name.toUpperCase()}</div>
+    </div>
+    `);
+  }
+}
 
 // ===================== CAROUSEL ==============================
 // let slideIndex = 1;
@@ -69,17 +85,3 @@ function getResults() {
 //     slides[slideIndex - 1].style.display = "block";
 //   }
 // }
-
-// function renderCarousel(events) {
-//   for (let i = 0; i < events.length; i++) {
-//     $(".carousel").append(`
-//     <div class="slides fade">
-//         <img src=${events[i].images[0].url} alt="article">
-//         <div class="title-text">${events[i].name.toUpperCase()}</div>
-//     </div>
-//     `);
-//   }
-//   showSlides(slideIndex);
-// }
-
- 
