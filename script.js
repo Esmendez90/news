@@ -24,33 +24,46 @@ function getResults() {
       `https://app.ticketmaster.com/discovery/v2/attractions.json?&keyword=${keyword}&apikey=${apiKey}`
     )
     .then((response) => {
-      // console.log(response);
       if (response.data.page.totalElements == "0") {
         alert("No attraction, artist, or event found.");
       } else {
-        // $(".text-intro").addClass("hide");
-        // $(".form-container").addClass("move-form");
         console.log(response.data._embedded.attractions);
+        handleAnimation();
         renderData(response.data._embedded.attractions);
       }
-
-      //   title = response.data.articles.title;
-      //   imgUrl = response.data.articles.urlToImage;
     })
     .catch((error) => {
       console.log(error);
     });
 }
-function renderData(attractions) {
+function handleAnimation() {
   $(".text-intro").addClass("hide");
   $(".form-container").addClass("move-form");
+
+  let delayInMilliseconds = 1000;
+
+  setTimeout(function () {
+    $(".results-text").empty();
+    $(".results-text")
+      .addClass("show-text")
+      .append(
+        `<p>Results related to <strong><em>"${keyword}"</em></strong>.</p>`
+      );
+  }, delayInMilliseconds);
+}
+
+
+function renderData(attractions) {
+  $(".wrapper").empty();
   $(".wrapper").addClass("move-wrapper");
 
   for (let i = 0; i < attractions.length; i++) {
     $(".wrapper").append(`
     <div class="slides">
-        <img src=${attractions[i].images[0].url} alt="article">
-        <div class="title-text">${attractions[i].name.toUpperCase()}</div>
+        <img src=${attractions[i].images[0].url} alt="photo of event">
+        <div class="title-text">${attractions[i].name.toUpperCase()}
+          <span><a href=${attractions[i].url} target="_blank">Tickets</a></span>
+        </div>
     </div>
     `);
   }

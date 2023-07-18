@@ -105,6 +105,13 @@ button,
   font-weight: bold;
   color: #222121;
 }
+.results-text {
+  display: none;
+  margin: auto;
+  width: 91%;
+  opacity: 0;
+  font-size: 16px;
+}
 .wrapper {
   width: auto;
   height: 0px;
@@ -134,6 +141,13 @@ button,
   font-size: 16px;
   font-weight: bold;
 }
+.title-text a {
+  color: #e91e63;
+  background-color: #000000bf;
+  padding: 2px;
+  border-radius: 5px;
+  text-decoration: none;
+}
 footer {
   display: flex;
   align-items: center;
@@ -149,8 +163,30 @@ footer p {
 footer img {
   width: 62px;
 }
+@media screen and (min-width: 412px) {
+  .text-intro {
+    transform: translateY(200%);
+  }
+  .move-wrapper {
+    bottom: 76% !important;
+  }
+}
+@media screen and (min-width: 768px) {
+  h1 {
+    font-size: 60px;
+    transition: font-size 0.5s;
+    transition-timing-function: ease-in-out;
+  }
+  h1:hover {
+    font-size: 90px;
+  }
+  .text-intro {
+    padding: 0 10rem;
+    transform: translateY(320%);
+  }
+}
 
-/* Dinamycally added attributes */
+/* ========= Dinamycally added attributes with animation ============ */
 /* hide text-intro container */
 .hide {
   transition: transform 1s, opacity 1s;
@@ -167,23 +203,21 @@ footer img {
 .move-form {
   top: 10%;
 }
+.show-text{
+  transition: display 1s, opacity 1s;
+  transition-timing-function: ease-in-out;
+}
+.show-text{
+  display: flex;
+  opacity: 1;
+  align-items: center;
+}
 .move-wrapper {
   transition: bottom 1s;
   transition-timing-function: ease-in-out;
 }
-.move-wrapper{
-  bottom: 72%;
-}
-
-@media screen and (min-width: 768px) {
-  h1 {
-    font-size: 60px;
-    transition: font-size 0.5s;
-    transition-timing-function: ease-in-out;
-  }
-  h1:hover {
-    font-size: 90px;
-  }
+.move-wrapper {
+  bottom: 65%;
 }
 
 /* =============================================================== */
