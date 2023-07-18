@@ -18,15 +18,21 @@ h1 {
   transition: font-size 0.5s;
   transition-timing-function: ease-in-out;
 }
-h1 p {
+/* h1 p {
   margin: 0;
   margin-top: -5px;
   font-size: 24.5px;
-}
+  opacity: 1;
+  transition: opacity 0.5s;
+  transition-timing-function: ease-in-out;
+} */
 
 h1:hover {
   font-size: 60px;
 }
+/* h1 p:hover{
+  opacity: 0;
+} */
 .text-intro {
   margin: auto;
   padding: 0 2rem;
@@ -155,6 +161,7 @@ footer {
   position: fixed;
   bottom: 0;
   width: 100%;
+  height: 65px;
 }
 footer p {
   margin: 0;
@@ -219,7 +226,20 @@ footer img {
 .move-wrapper {
   bottom: 65%;
 }
-
+.alter-footer{
+  transition: height 1s, background-color 1s;
+  transition-timing-function: ease-in-out;
+}
+.alter-footer{
+  background-color: #e91e63c9;
+  height: 40px;
+}
+.alter-footer img {
+  transition: width 1s;
+}
+.alter-footer img{
+  width: 40px;
+}
 /* =============================================================== */
 /*.carousel {
   width: 100%;

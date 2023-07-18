@@ -53,6 +53,7 @@ function handleClasses(attractions) {
 function handleAnimation() {
   $(".text-intro").addClass("hide");
   $(".form-container").addClass("move-form");
+  $("footer").addClass("alter-footer")
 
   setTimeout(function () {
     $(".results-text").empty();
@@ -79,6 +80,12 @@ function renderData(attractions) {
     `);
   }
 }
+
+$(window).scroll(function () {
+  let content = $("footer");
+  let scrollTop = $(window).scrollTop();
+  content.css("opacity", 1 - scrollTop / 500);
+});
 
 // ===================== CAROUSEL ==============================
 // let slideIndex = 1;
