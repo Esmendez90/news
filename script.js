@@ -84,7 +84,7 @@ function renderData(attractions) {
 }
 function renderResultsById(resultsById) {
   console.log(resultsById);
-  $(".wrapper").css("opacity","0.6").css("z-index","-1");
+  $(".wrapper").css("overflow","hidden");
   $(".see-more-wrapper").css("display","block");
   $(".see-more-wrapper").empty();
   $(".results-text").text(`Event results: ${resultsById.length}`)
