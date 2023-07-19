@@ -73,7 +73,7 @@ function renderData(attractions) {
     <button id=${attractions[i].id} class="see-more-btn">See more</button>
 
         <img src=${attractions[i].images[0].url} alt="photo of event">
-        <div class="title-text">${attractions[i].name.toUpperCase()}
+        <div class="title-text"><span style="margin-right: 10px;"></span>${attractions[i].name.toUpperCase()}
           <span><a href=${attractions[i].url} target="_blank">Tickets</a></span>
         </div>
     </div>
@@ -88,7 +88,7 @@ function getResultsById(id) {
       `https://app.ticketmaster.com/discovery/v2/events.json?attractionId=${id}&apikey=${apiKey}`
     )
     .then((response) => {
-      console.log(response);
+      console.log(response.data._embedded);
     })
     .catch((error) => {
       console.log(error);
