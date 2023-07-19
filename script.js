@@ -73,8 +73,36 @@ function renderData(attractions) {
     <button id=${attractions[i].id} class="see-more-btn">See more</button>
 
         <img src=${attractions[i].images[0].url} alt="photo of event">
-        <div class="title-text"><span style="margin-right: 10px;"></span>${attractions[i].name.toUpperCase()}
+        <div class="title-text"><span style="margin-right: 10px;"></span>${attractions[
+          i
+        ].name.toUpperCase()}
           <span><a href=${attractions[i].url} target="_blank">Tickets</a></span>
+        </div>
+    </div>
+    `);
+  }
+}
+function renderResultsById(resultsById) {
+  console.log(resultsById);
+  $(".wrapper").css("opacity","0.6").css("z-index","-1");
+  $(".see-more-wrapper").css("display","block");
+  $(".see-more-wrapper").empty();
+  $(".results-text").text(`Event results: ${resultsById.length}`)
+  for (let i = 0; i < resultsById.length; i++) {
+    
+    $(".see-more-wrapper").append(`
+   
+    <div class="slides">
+        <div class="title-text">
+       <p>${resultsById[i].name.toUpperCase()}</p>
+       <p style="font-weight:100;">${resultsById[i].dates.timezone}</p>
+       <p style="font-weight:100;">${resultsById[i].dates.start.localDate}</p>
+       <p style="font-weight:100;">${resultsById[i].dates.start.localTime}</p>
+       
+          <p style="width: fit-content;
+          padding: 5px;
+          background: #000000e8;
+          border-radius: 5px;"><a href=${resultsById[i].url} target="_blank">Tickets</a></p>
         </div>
     </div>
     `);
@@ -82,13 +110,19 @@ function renderData(attractions) {
 }
 
 function getResultsById(id) {
-  console.log("Something happens here")
+  console.log("Something happens here");
   axios
     .get(
       `https://app.ticketmaster.com/discovery/v2/events.json?attractionId=${id}&apikey=${apiKey}`
     )
     .then((response) => {
-      console.log(response.data._embedded);
+      // console.log(response.data._embedded);
+      if (response.data.page.totalElements == "0") {
+        alert("No attraction, artist, or event found.");
+      } else {
+        //console.log(response.data._embedded.attractions);
+        renderResultsById(response.data._embedded.events);
+      }
     })
     .catch((error) => {
       console.log(error);
@@ -96,6 +130,7 @@ function getResultsById(id) {
 }
 // Dynamic button, get results by Id
 $(document).on("click", ".see-more-btn", function (e) {
+  e.preventDefault();
   getResultsById(e.target.id);
 });
 
@@ -105,8 +140,6 @@ $(window).scroll(function () {
   let scrollTop = $(window).scrollTop();
   content.css("opacity", 1 - scrollTop / 500);
 });
-
-
 
 // ===================== CAROUSEL ==============================
 // let slideIndex = 1;
