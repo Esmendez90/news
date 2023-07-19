@@ -135,6 +135,9 @@ button,
   color: white;
   font-weight: bold;
 }
+.wrapper-container {
+  display: none;
+}
 
 .see-more-wrapper {
   display: none;
@@ -165,6 +168,17 @@ button,
   margin-left: 0;
   margin-right: 0;
 }
+
+/* .fa-circle-chevron-right {
+  position: fixed;
+  padding: 0.5rem;
+  font-size: 43px;
+  bottom: 70px;
+  right: 15px;
+  color: #e91e63;
+  background-color: #a2a1a1b8;
+  border-radius: 50px;
+} */
 /* slides */
 .slides {
   position: relative;
@@ -236,6 +250,12 @@ footer img {
   .text-intro {
     padding: 0 10rem;
     transform: translateY(320%);
+  }
+  .see-more-wrapper {
+    display: flex;
+  }
+  .see-more-wrapper .slides {
+    width: 45%;
   }
 }
 

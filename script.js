@@ -85,24 +85,25 @@ function renderData(attractions) {
 function renderResultsById(resultsById) {
   console.log(resultsById);
   $(".wrapper").css("overflow","hidden");
+  $(".wrapper-container").css("display","block");
   $(".see-more-wrapper").css("display","block");
   $(".see-more-wrapper").empty();
   $(".results-text").text(`Event results: ${resultsById.length}`)
+// $(".wrapper-container").append(`<i class="fa-solid fa-circle-chevron-right"></i>`)
   for (let i = 0; i < resultsById.length; i++) {
     
     $(".see-more-wrapper").append(`
-   
     <div class="slides">
         <div class="title-text">
        <p>${resultsById[i].name.toUpperCase()}</p>
        <p style="font-weight:100;">${resultsById[i].dates.timezone}</p>
        <p style="font-weight:100;">${resultsById[i].dates.start.localDate}</p>
-       <p style="font-weight:100;">${resultsById[i].dates.start.localTime}</p>
+       <p style="font-weight:100; float:left; clear:right;">${resultsById[i].dates.start.localTime}</p>
        
           <p style="width: fit-content;
           padding: 5px;
           background: #000000e8;
-          border-radius: 5px;"><a href=${resultsById[i].url} target="_blank">Tickets</a></p>
+          border-radius: 5px; float:right;"><a href=${resultsById[i].url} target="_blank">Tickets</a></p>
         </div>
     </div>
     `);
