@@ -47,6 +47,7 @@ h1:hover {
 .form-container {
   width: 100%;
   display: flex;
+  margin-top: 15px;
   justify-content: center;
   align-items: center;
   position: absolute;
@@ -118,6 +119,9 @@ button,
   width: 91%;
   opacity: 0;
   font-size: 16px;
+}
+.results-text p{
+margin-top: 0;
 }
 .wrapper {
   width: 100%;
@@ -230,6 +234,12 @@ footer img {
   width: 62px;
 }
 @media screen and (min-width: 412px) {
+  .form-container{
+    margin-top: auto;
+  }
+   .results-text p{
+    margin-top: 10px;
+    }
   .text-intro {
     transform: translateY(200%);
   }
