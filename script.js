@@ -89,7 +89,7 @@ function renderResultsById(resultsById) {
   $(".see-more-wrapper").css("display","block");
   $(".see-more-wrapper").empty();
   $(".results-text").text(`Event results: ${resultsById.length}`)
-// $(".wrapper-container").append(`<i class="fa-solid fa-circle-chevron-right"></i>`)
+ $(".wrapper-container").append(`<i class="fa-solid fa-xmark"></i>`)
   for (let i = 0; i < resultsById.length; i++) {
     
     $(".see-more-wrapper").append(`
@@ -98,7 +98,7 @@ function renderResultsById(resultsById) {
        <p>${resultsById[i].name.toUpperCase()}</p>
        <p style="font-weight:100;">${resultsById[i].dates.timezone}</p>
        <p style="font-weight:100;">${resultsById[i].dates.start.localDate}</p>
-       <p style="font-weight:100; float:left; clear:right;">${resultsById[i].dates.start.localTime}</p>
+       <p style="font-weight:100;">${resultsById[i].dates.start.localTime}</p>
        
           <p style="width: fit-content;
           padding: 5px;
@@ -133,6 +133,16 @@ function getResultsById(id) {
 $(document).on("click", ".see-more-btn", function (e) {
   e.preventDefault();
   getResultsById(e.target.id);
+});
+
+// Dynamic button, x mark
+$(document).on("click", ".fa-xmark", function (e) {
+  e.preventDefault();
+  console.log("what's this ahhh");
+  $(".wrapper-container").css("display","none");
+  $(".wrapper").css("overflow","initial");
+  $(".results-text").empty();
+  $(".results-text").append(`<p>Results related to <strong><em>"${keyword}"</em></strong>.</p>`)
 });
 
 // Footer animation handler

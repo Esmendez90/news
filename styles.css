@@ -139,8 +139,15 @@ button,
 }
 .wrapper-container {
   display: none;
+  position: relative;
 }
-
+.fa-xmark {
+  position: absolute;
+  top: 20px;
+  right: 6%;
+  font-size: 21px;
+  color: #e91e63d6;
+}
 .see-more-wrapper {
   display: none;
   background-color: #070707a5;
@@ -170,17 +177,6 @@ button,
   margin-left: 0;
   margin-right: 0;
 }
-
-/* .fa-circle-chevron-right {
-  position: fixed;
-  padding: 0.5rem;
-  font-size: 43px;
-  bottom: 70px;
-  right: 15px;
-  color: #e91e63;
-  background-color: #a2a1a1b8;
-  border-radius: 50px;
-} */
 /* slides */
 .slides {
   position: relative;
@@ -244,48 +240,73 @@ footer img {
 @media screen and (min-width: 768px) {
   h1 {
     font-size: 60px;
-    transition: font-size 0.5s;
+    transition: font-size 0.3s;
     transition-timing-function: ease-in-out;
   }
   h1:hover {
-    font-size: 90px;
+    font-size: 65px;
   }
   .text-intro {
     padding: 0 10rem;
     transform: translateY(320%);
   }
   .wrapper {
-    display:inline-block
+    display: inline-block;
   }
   .slides {
     width: 29%;
     margin: 10px;
     display: inline-flex;
-    box-shadow: 0 0 12px #000000d6;;
+  }
+  .wrapper > .slides {
+    box-shadow: 0 0 12px #000000d6;
     transition: width 0.1s;
     transition-timing-function: ease-in-out;
-
   }
-  .slides:hover{
+  .wrapper > .slides:hover {
     width: 30%;
-     height: 241px; 
-  }
-  .slide img{
-    transition: height 0.1s;
-    transition-timing-function:ease-in-out;
-  }
-  .slides img:hover{
     height: 241px;
   }
-  .title-text{
+  .wrapper > .slide img {
+    transition: height 0.1s;
+    transition-timing-function: ease-in-out;
+  }
+  .wrapper > .slides img:hover {
+    height: 241px;
+  }
+  .title-text {
     font-size: 12px;
+  }
+  .see-more-wrapper {
+    text-align: center;
+  }
+  .see-more-wrapper .slides {
+    display: inline-flex;
   }
 }
 
 @media screen and (min-width: 820px) {
-.show-text{
-  margin-top: 45px;
+  .show-text {
+    margin-top: 45px;
+  }
 }
+
+@media screen and (min-width: 992px) {
+  .slides {
+    width: 20%;
+  }
+  .wrapper > .slides:hover {
+    width: 21%;
+    height: 241px;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .slides {
+    width: 17%;
+  }
+  .wrapper > .slides:hover {
+    width: 18%;
+  }
 }
 
 /* ========= Dinamycally added attributes with animation ============ */
