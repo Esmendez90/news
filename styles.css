@@ -91,6 +91,7 @@ button {
 }
 input,
 button,
+.slides,
 .slides img {
   border-radius: 5px;
 }
@@ -122,6 +123,7 @@ button,
   width: 100%;
   height: 0px;
   background-color: green;
+  text-align: center;
   position: absolute;
   bottom: 0;
   transform: translateY(0);
@@ -201,6 +203,7 @@ button,
   margin: auto;
   display: flex;
   align-items: center;
+  text-align: left;
   font-size: 16px;
   font-weight: bold;
   background-color: #000000de;
@@ -251,12 +254,38 @@ footer img {
     padding: 0 10rem;
     transform: translateY(320%);
   }
-  .see-more-wrapper {
-    display: flex;
+  .wrapper {
+    display:inline-block
   }
-  .see-more-wrapper .slides {
-    width: 45%;
+  .slides {
+    width: 29%;
+    margin: 10px;
+    display: inline-flex;
+    box-shadow: 0 0 12px #000000d6;;
+    transition: width 0.1s;
+    transition-timing-function: ease-in-out;
+
   }
+  .slides:hover{
+    width: 30%;
+     height: 241px; 
+  }
+  .slide img{
+    transition: height 0.1s;
+    transition-timing-function:ease-in-out;
+  }
+  .slides img:hover{
+    height: 241px;
+  }
+  .title-text{
+    font-size: 12px;
+  }
+}
+
+@media screen and (min-width: 820px) {
+.show-text{
+  margin-top: 45px;
+}
 }
 
 /* ========= Dinamycally added attributes with animation ============ */
