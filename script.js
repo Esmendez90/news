@@ -61,7 +61,7 @@ function handleAnimation() {
       .append(
         `<p>Results related to <strong><em>"${keyword}"</em></strong>.</p>`
       );
-  }, 1000);
+  }, 100);
 }
 
 function renderData(attractions) {
