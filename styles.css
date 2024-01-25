@@ -125,6 +125,9 @@ button,
   margin: 15px 9%;
   text-align: left;
 }
+.results-text-2 {
+  margin: 15px;
+}
 .wrapper {
   width: 90%;
   height: 0px;
@@ -147,12 +150,14 @@ button,
 .wrapper-container {
   display: none;
   position: relative;
+  background-color: black;
+  padding: 10px 15px;
 }
 .fa-xmark {
   position: absolute;
-  top: 20px;
+  top: 15px;
   right: 6%;
-  font-size: 21px;
+  font-size: 30px;
   color: #e91e63d6;
 }
 .see-more-wrapper {

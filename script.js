@@ -150,6 +150,7 @@ $(document).on("click", ".fa-xmark", function (e) {
   $(".wrapper-container").css("display", "none");
   $(".wrapper").css("overflow", "initial");
   $(".results-text").empty();
+  $(".results-text-2").empty();
   $(".results-text").append(
     `<p>Results related to <strong><em>"${keyword}"</em></strong>.</p>`
   );
