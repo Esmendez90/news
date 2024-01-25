@@ -21,7 +21,7 @@ function getResults() {
     .get(
       `https://app.ticketmaster.com/discovery/v2/attractions.json?&keyword=${keyword}&apikey=${apiKey}`
       // `https://app.ticketmaster.com/discovery/v2/events.json?&countryCode=AU&apikey=0DsuAyGvECXLVAGtuUju6HSU98Eig6H3`
-      )
+    )
     .then((response) => {
       if (response.data.page.totalElements == "0") {
         alert("No attraction, artist, or event found.");
@@ -67,17 +67,18 @@ function handleAnimation() {
 function renderData(attractions) {
   $(".wrapper").addClass("move-wrapper");
   $(".wrapper").empty();
-let btnDisplay;
+  let btnDisplay;
   for (let i = 0; i < attractions.length; i++) {
-if (attractions[i].upcomingEvents._total == "0")
-{
-  btnDisplay = "none"
-} else {
-  btnDisplay = "block";
-}
+    if (attractions[i].upcomingEvents._total == "0") {
+      btnDisplay = "none";
+    } else {
+      btnDisplay = "block";
+    }
     $(".wrapper").append(`
     <div class="slides">
-    <button id=${attractions[i].id} class="see-more-btn" style="display:${btnDisplay}">See more</button>
+    <button id=${
+      attractions[i].id
+    } class="see-more-btn" style="display:${btnDisplay}">See more</button>
 
         <img src=${attractions[i].images[0].url} alt="photo of event">
         <div class="title-text"><span style="margin-right: 10px;"></span>${attractions[
@@ -91,15 +92,14 @@ if (attractions[i].upcomingEvents._total == "0")
 }
 function renderResultsById(resultsById) {
   console.log(resultsById);
-  $(".wrapper").css("overflow","hidden");
-  $(".wrapper-container").css("display","block");
-  $(".see-more-wrapper").css("display","block");
+  $(".wrapper").css("overflow", "hidden");
+  $(".wrapper-container").css("display", "block");
+  $(".see-more-wrapper").css("display", "block");
   $(".see-more-wrapper").empty();
-  $(".results-text").text(`Event results: ${resultsById.length}`)
- $(".wrapper-container").append(`<i class="fa-solid fa-xmark"></i>`)
+  $(".results-text-2").append(`<p>Event results: ${resultsById.length}.</p>`);
+  $(".wrapper-container").append(`<i class="fa-solid fa-xmark"></i>`);
 
   for (let i = 0; i < resultsById.length; i++) {
-    
     $(".see-more-wrapper").append(`
     <div class="slides">
         <div class="title-text">
@@ -111,7 +111,9 @@ function renderResultsById(resultsById) {
           <p style="width: fit-content;
           padding: 5px;
           background: #000000e8;
-          border-radius: 5px; float:right;"><a href=${resultsById[i].url} target="_blank">Tickets</a></p>
+          border-radius: 5px; float:right;"><a href=${
+            resultsById[i].url
+          } target="_blank">Tickets</a></p>
         </div>
     </div>
     `);
@@ -145,10 +147,12 @@ $(document).on("click", ".see-more-btn", function (e) {
 // Dynamic button, x mark
 $(document).on("click", ".fa-xmark", function (e) {
   e.preventDefault();
-  $(".wrapper-container").css("display","none");
-  $(".wrapper").css("overflow","initial");
+  $(".wrapper-container").css("display", "none");
+  $(".wrapper").css("overflow", "initial");
   $(".results-text").empty();
-  $(".results-text").append(`<p>Results related to <strong><em>"${keyword}"</em></strong>.</p>`)
+  $(".results-text").append(
+    `<p>Results related to <strong><em>"${keyword}"</em></strong>.</p>`
+  );
 });
 
 // Footer animation handler
@@ -157,33 +161,3 @@ $(window).scroll(function () {
   let scrollTop = $(window).scrollTop();
   content.css("opacity", 1 - scrollTop / 500);
 });
-
-// ===================== CAROUSEL ==============================
-// let slideIndex = 1;
-// showSlides(slideIndex);
-
-// function plusSlides(n) {
-//   //console.log("what is n:", n);
-//   showSlides((slideIndex += n));
-// }
-
-// function showSlides(n) {
-//   //   console.log("Line 32, n is: ", n)
-//   let i;
-//   let slides = document.getElementsByClassName("slides");
-//   //   console.log("slides.length: ", slides.length)
-//   if (n > slides.length) {
-//     // if index greater than slides.length (aka 21 > 20) then index goes back to 1
-//     slideIndex = 1;
-//     // console.log("new  ", slideIndex);
-//   }
-//   if (n < 1) {
-//     slideIndex = slides.length;
-//     // console.log("AAHH ", slideIndex);
-//   }
-//   for (i = 0; i < slides.length; i++) {
-//     // console.log("slides [i]: ", slides[i]);
-//     slides[i].style.display = "none";
-//     slides[slideIndex - 1].style.display = "block";
-//   }
-// }

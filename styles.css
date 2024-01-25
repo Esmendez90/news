@@ -117,12 +117,13 @@ button,
 .results-text {
   display: none;
   margin: auto;
-  width: 91%;
+  width: 100%;
   opacity: 0;
   font-size: 16px;
 }
 .results-text p {
-  margin-top: 15px;
+  margin: 15px 9%;
+  text-align: left;
 }
 .wrapper {
   width: 90%;
@@ -336,7 +337,7 @@ footer img {
   transition-timing-function: ease-in-out;
 }
 .move-form {
-  top: 140px;
+  top: 120px;
   transform: translate(0, 0);
 }
 .move-form .nav-bar {
@@ -344,16 +345,16 @@ footer img {
   transition-timing-function: ease-in-out;
 }
 .move-form .nav-bar {
-  top: -80%;
+  top: -60%;
 }
 .show-text {
   transition: display 1s, opacity 1s;
   transition-timing-function: ease-in-out;
 }
 .show-text {
-  display: flex;
+  display: block;
   opacity: 1;
-  align-items: center;
+  /* align-items: center; */
 }
 /* .move-wrapper {
   transition: bottom 1s;
