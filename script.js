@@ -76,6 +76,10 @@ function renderData(attractions) {
     }
     $(".wrapper").append(`
     <div class="slides">
+    <div class="classifications-container">
+      <p>${attractions[i].classifications[0].segment.name}</p>
+      <p>${attractions[i].classifications[0].genre.name}</p>
+    </div>
     <button id=${
       attractions[i].id
     } class="see-more-btn" style="display:${btnDisplay}">See more</button>
@@ -100,13 +104,34 @@ function renderResultsById(resultsById) {
   $(".wrapper-container").append(`<i class="fa-solid fa-xmark"></i>`);
 
   for (let i = 0; i < resultsById.length; i++) {
+    console.log("events by ID: ", resultsById[i].dates.start.localTime);
+    // if resultsById[i].dates.start.localTime = undefined
+    // then text should read "Time to be defined"
+    let localTime;
+    if (resultsById[i].dates.start.localTime) {
+      localTime = resultsById[i].dates.start.localTime;
+    } else {
+      localTime = "Hour: TBD";
+    }
+
+    let timeZone;
+    if (resultsById[i].dates.timezone) {
+      timeZone = resultsById[i].dates.timezone;
+    } else {
+      timeZone = "Place: TBD";
+    }
+
+    // if resultsById[i].dates.status.code = "cancelled"
+    // then text should read "Event cancelled"
+
     $(".see-more-wrapper").append(`
     <div class="slides">
         <div class="title-text">
        <p>${resultsById[i].name.toUpperCase()}</p>
-       <p style="font-weight:100;">${resultsById[i].dates.timezone}</p>
+       <p style="font-weight:100;">${timeZone}</p>
        <p style="font-weight:100;">${resultsById[i].dates.start.localDate}</p>
-       <p style="font-weight:100;">${resultsById[i].dates.start.localTime}</p>
+    
+       <p style="font-weight:100;">${localTime}</p>
        
           <p style="width: fit-content;
           padding: 5px;
