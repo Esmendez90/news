@@ -98,6 +98,7 @@ button,
   width: fit-content;
   position: absolute;
   margin: 0 15px;
+  text-align: left;
 }
 .classifications-container > p:first-child {
   width: fit-content;

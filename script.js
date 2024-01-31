@@ -26,7 +26,7 @@ function getResults() {
       if (response.data.page.totalElements == "0") {
         alert("No attraction, artist, or event found.");
       } else {
-        console.log(response);
+        console.log(response.data._embedded.attractions);
 
         handleAnimation();
         handleClasses(response.data._embedded.attractions);
@@ -65,20 +65,56 @@ function handleAnimation() {
 }
 
 function renderData(attractions) {
+  let btnDisplay;
+  let segmentName;
+  let genre;
   $(".wrapper").addClass("move-wrapper");
   $(".wrapper").empty();
-  let btnDisplay;
+
   for (let i = 0; i < attractions.length; i++) {
+    // Button display property to see more attractions
     if (attractions[i].upcomingEvents._total == "0") {
       btnDisplay = "none";
     } else {
       btnDisplay = "block";
     }
+
+    // if statement that handles "undefined" results for segment name
+
+    if (attractions[i].classifications[0].segment.name == "Undefined") {
+      segmentName = "Other";
+    } else {
+      segmentName = attractions[i].classifications[0].segment.name;
+    }
+
+    // if statement that handles "undefined" results/not found - for genre
+    if (
+      (attractions[i].classifications[0].genre &&
+        attractions[i].classifications[0].genre.name == "Undefined") ||
+      (attractions[i].classifications[0].genre &&
+        attractions[i].classifications[0].genre.name == "Miscellaneous") ||
+      (attractions[i].classifications[0].genre &&
+        attractions[i].classifications[0].genre.name == "Other")
+    ) {
+      genre = "Other";
+    } else if (attractions[i].classifications[0].genre) {
+      genre = attractions[i].classifications[0].genre.name;
+    } else {
+      genre = "Other";
+    }
+
+    // if statement that handles externalLinks
+    // if ((attractions[i].externalLinks)){
+    //   console.log(attractions[i].externalLinks);
+    // } else {
+    //   console.log("no external links found")
+    // }
+
     $(".wrapper").append(`
     <div class="slides">
     <div class="classifications-container">
-      <p>${attractions[i].classifications[0].segment.name}</p>
-      <p>${attractions[i].classifications[0].genre.name}</p>
+      <p>${segmentName}</p>
+      <p>${genre}</p>
     </div>
     <button id=${
       attractions[i].id
@@ -94,6 +130,7 @@ function renderData(attractions) {
     `);
   }
 }
+
 function renderResultsById(resultsById) {
   console.log(resultsById);
   $(".wrapper").css("overflow", "hidden");
@@ -104,7 +141,6 @@ function renderResultsById(resultsById) {
   $(".wrapper-container").append(`<i class="fa-solid fa-xmark"></i>`);
 
   for (let i = 0; i < resultsById.length; i++) {
-    console.log("events by ID: ", resultsById[i].dates.start.localTime);
     // if resultsById[i].dates.start.localTime = undefined
     // then text should read "Time to be defined"
     let localTime;
