@@ -84,27 +84,18 @@ function renderData(attractions) {
       <p>${segmentName}</p>
     <p>${genre}</p>
     </div>
-    <button id=${
-      attractions[i].id
-    } class="see-more-btn" style="display:${btnDisplay}">See more</button>
+      <button id=${
+        attractions[i].id
+      } class="see-more-btn" style="display:${btnDisplay}">See more</button>
 
         <img src=${attractions[i].images[0].url} alt="photo of event">
         <div class="externalLinks-container">
-        <ul class="externalLinks-ul-container">
-     
-        
-        ${externallinks}
-        
-        
-        </ul>
-        
+          <ul class="externalLinks-ul-container">${externallinks}</ul>        
         </div>  
-        <div class="title-text">
-     
-        
-        <span style="margin-right: 10px;"></span>${attractions[
-          i
-        ].name.toUpperCase()}
+        <div class="title-text">       
+          <span style="margin-right: 10px;"></span>${attractions[
+            i
+          ].name.toUpperCase()}
           <span><a href=${attractions[i].url} target="_blank">Tickets</a></span>
         </div>
     </div>
@@ -122,9 +113,8 @@ function getBtnDisplayProp(btnDisplayProp) {
 }
 
 function getSegmentName(segmentnames) {
-  //console.log("Segment Names: ", segmentnames);
   // if statement that handles "undefined" results for segment name
-  if (segmentnames === "Undefined") {
+  if ((segmentnames === "Undefined") || (segmentnames === "Miscellaneous")) {
     return "Other";
   } else {
     return segmentnames;
@@ -132,7 +122,6 @@ function getSegmentName(segmentnames) {
 }
 
 function getGenreName(genrenames) {
-  //console.log("Genres: ", genrenames);
   // if statement that handles "undefined" results/not found - for genre
   if (
     (genrenames && genrenames.name === "Undefined") ||
@@ -148,23 +137,29 @@ function getGenreName(genrenames) {
 }
 
 function getExternalLinks(externallinks) {
-  let links = [];
   if (externallinks) {
+    let links = [];
     for (const property in externallinks) {
-      //console.log(`${property}: ${externallinks[property][0].url}`);
-      links.push(`<li class="externalLink-item"><a href=${externallinks[property][0].url} target="_blank"><i class="fa-brands fa-${property}"></i></a></li>`)
+      let propertyClassName = "";
+
+      if (`${property}` === "homepage") {
+        propertyClassName = `fa-solid fa-house`;
+      } else if (`${property}` === "wiki") {
+        propertyClassName = `fa-brands fa-wikipedia-w"`;
+      }else {
+        propertyClassName = `fa-brands fa-${property}`;
+      }
+      links.push(
+        `<li class="externalLink-item"><a href=${externallinks[property][0].url} target="_blank"><i class="${propertyClassName}"></i></a></li>`
+      );
     }
+    console.log(links);
+    links = links.toString().split(",").join(" ");
+    console.log(links);
+    return links;
   } else {
-    console.log("No external links available!");
-
+    return "";
   }
-
-
-
-  links = links.toString().split(",").join(" ");
-  console.log(links);
-  return links;
-
 }
 
 function renderResultsById(resultsById) {
