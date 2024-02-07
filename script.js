@@ -65,51 +65,18 @@ function handleAnimation() {
 }
 
 function renderData(attractions) {
-  let btnDisplay;
-  //let segmentName = getSegmentName(attractions[i].classifications[0].segment.name);
-  //let genre;
   $(".wrapper").addClass("move-wrapper");
   $(".wrapper").empty();
 
   for (let i = 0; i < attractions.length; i++) {
+    let btnDisplay = getBtnDisplayProp(attractions[i].upcomingEvents._total);
+
     let segmentName = getSegmentName(
       attractions[i].classifications[0].segment.name
     );
-    // Button display property to see more attractions
-    if (attractions[i].upcomingEvents._total == "0") {
-      btnDisplay = "none";
-    } else {
-      btnDisplay = "block";
-    }
-
     let genre = getGenreName(attractions[i].classifications[0].genre);
 
-    // if statement that handles "undefined" results/not found - for genre
-    // if (
-    //   (attractions[i].classifications[0].genre &&
-    //     attractions[i].classifications[0].genre.name == "Undefined") ||
-    //   (attractions[i].classifications[0].genre &&
-    //     attractions[i].classifications[0].genre.name == "Miscellaneous") ||
-    //   (attractions[i].classifications[0].genre &&
-    //     attractions[i].classifications[0].genre.name == "Other")
-    // ) {
-    //   genre = "Other";
-    // } else if (attractions[i].classifications[0].genre) {
-    //   genre = attractions[i].classifications[0].genre.name;
-    // } else {
-    //   genre = "Other";
-    // }
-
-    // if statement that handles externalLinks
-    // if ((attractions[i].externalLinks)){
-    //   let exLinks = attractions[i].externalLinks
-    //   getExternalLinks = (exLinks) => {
-    //     console.log(externalLinks);
-    //   };
-
-    // } else {
-    //   console.log("no external links found")
-    // }
+    let externallinks = getExternalLinks(attractions[i].externalLinks);
 
     $(".wrapper").append(`
     <div class="slides">
@@ -122,7 +89,20 @@ function renderData(attractions) {
     } class="see-more-btn" style="display:${btnDisplay}">See more</button>
 
         <img src=${attractions[i].images[0].url} alt="photo of event">
-        <div class="title-text"><span style="margin-right: 10px;"></span>${attractions[
+        <div class="externalLinks-container">
+        <ul class="externalLinks-ul-container">
+     
+        
+        ${externallinks}
+        
+        
+        </ul>
+        
+        </div>  
+        <div class="title-text">
+     
+        
+        <span style="margin-right: 10px;"></span>${attractions[
           i
         ].name.toUpperCase()}
           <span><a href=${attractions[i].url} target="_blank">Tickets</a></span>
@@ -132,10 +112,18 @@ function renderData(attractions) {
   }
 }
 
-function getSegmentName(segmentnames) {
-  console.log("Segment Names: ", segmentnames);
-  // if statement that handles "undefined" results for segment name
+function getBtnDisplayProp(btnDisplayProp) {
+  // Button display property to see more attractions
+  if (btnDisplayProp == "0") {
+    return "none";
+  } else {
+    return "block";
+  }
+}
 
+function getSegmentName(segmentnames) {
+  //console.log("Segment Names: ", segmentnames);
+  // if statement that handles "undefined" results for segment name
   if (segmentnames === "Undefined") {
     return "Other";
   } else {
@@ -144,7 +132,7 @@ function getSegmentName(segmentnames) {
 }
 
 function getGenreName(genrenames) {
-  console.log("Genres: ", genrenames);
+  //console.log("Genres: ", genrenames);
   // if statement that handles "undefined" results/not found - for genre
   if (
     (genrenames && genrenames.name === "Undefined") ||
@@ -157,6 +145,26 @@ function getGenreName(genrenames) {
   } else {
     return "Other";
   }
+}
+
+function getExternalLinks(externallinks) {
+  let links = [];
+  if (externallinks) {
+    for (const property in externallinks) {
+      //console.log(`${property}: ${externallinks[property][0].url}`);
+      links.push(`<li class="externalLink-item"><a href=${externallinks[property][0].url} target="_blank"><i class="fa-brands fa-${property}"></i></a></li>`)
+    }
+  } else {
+    console.log("No external links available!");
+
+  }
+
+
+
+  links = links.toString().split(",").join(" ");
+  console.log(links);
+  return links;
+
 }
 
 function renderResultsById(resultsById) {

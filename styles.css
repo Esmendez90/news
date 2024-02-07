@@ -266,6 +266,29 @@ footer p {
 footer img {
   width: 62px;
 }
+.externalLinks-container {
+  position: absolute;
+  bottom: 52px;
+  width: 100%;
+}
+.externalLinks-ul-container {
+  list-style: none;
+  display: inline-flex;
+  padding-left: 0;
+  margin: 2px auto;
+  width: 100%;
+  justify-content: center;
+  background-color: #ffffff8f;
+}
+
+.externalLink-item {
+  font-size: 22px;
+  margin: 0 6px;
+  margin-top: 1.5px;
+}
+.externalLink-item > a {
+  color: #e91e63;
+}
 @media screen and (min-width: 412px) {
   .form-container {
     margin-top: auto;
