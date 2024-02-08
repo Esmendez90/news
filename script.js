@@ -101,6 +101,8 @@ function renderData(attractions) {
     </div>
     `);
   }
+
+  $(".fa-musicbrainz")[0].parentElement.parentElement.style.display = "none";
 }
 
 function getBtnDisplayProp(btnDisplayProp) {
@@ -114,7 +116,7 @@ function getBtnDisplayProp(btnDisplayProp) {
 
 function getSegmentName(segmentnames) {
   // if statement that handles "undefined" results for segment name
-  if ((segmentnames === "Undefined") || (segmentnames === "Miscellaneous")) {
+  if (segmentnames === "Undefined" || segmentnames === "Miscellaneous") {
     return "Other";
   } else {
     return segmentnames;
@@ -146,21 +148,22 @@ function getExternalLinks(externallinks) {
         propertyClassName = `fa-solid fa-house`;
       } else if (`${property}` === "wiki") {
         propertyClassName = `fa-brands fa-wikipedia-w"`;
-      }else {
+      }  else {
         propertyClassName = `fa-brands fa-${property}`;
       }
       links.push(
         `<li class="externalLink-item"><a href=${externallinks[property][0].url} target="_blank"><i class="${propertyClassName}"></i></a></li>`
       );
     }
-    console.log(links);
+
     links = links.toString().split(",").join(" ");
-    console.log(links);
     return links;
   } else {
     return "";
   }
 }
+
+
 
 function renderResultsById(resultsById) {
   console.log(resultsById);
