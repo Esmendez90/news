@@ -77,7 +77,7 @@ function renderData(attractions) {
     let genre = getGenreName(attractions[i].classifications[0].genre);
 
     let externallinks = getExternalLinks(attractions[i].externalLinks);
-
+   
     $(".wrapper").append(`
     <div class="slides">
     <div class="classifications-container">
@@ -100,9 +100,9 @@ function renderData(attractions) {
         </div>
     </div>
     `);
+    
   }
-
-  $(".fa-musicbrainz")[0].parentElement.parentElement.style.display = "none";
+  
 }
 
 function getBtnDisplayProp(btnDisplayProp) {
@@ -141,18 +141,27 @@ function getGenreName(genrenames) {
 function getExternalLinks(externallinks) {
   if (externallinks) {
     let links = [];
+    
     for (const property in externallinks) {
       let propertyClassName = "";
+      let liClassName = "";
 
       if (`${property}` === "homepage") {
         propertyClassName = `fa-solid fa-house`;
+        liClassName = `class= externalLink-item`;
       } else if (`${property}` === "wiki") {
         propertyClassName = `fa-brands fa-wikipedia-w"`;
-      }  else {
+        liClassName = `class= externalLink-item`;
+      } else if (`${property}` === "musicbrainz") {
+        propertyClassName = `musicbrainz`;
+        liClassName = `style= display:none`;
+        handleMusicBrainz(`${externallinks[property][0].id}`);
+      } else {
         propertyClassName = `fa-brands fa-${property}`;
+        liClassName = `class= externalLink-item`;
       }
       links.push(
-        `<li class="externalLink-item"><a href=${externallinks[property][0].url} target="_blank"><i class="${propertyClassName}"></i></a></li>`
+        `<li ${liClassName}><a href=${externallinks[property][0].url} target="_blank"><i class="${propertyClassName}"></i></a></li>`
       );
     }
 
@@ -163,7 +172,13 @@ function getExternalLinks(externallinks) {
   }
 }
 
-
+function handleMusicBrainz(musicbrainzId) {
+//console.log(musicbrainzId);
+for (let i = 0; i < musicbrainzId.length; i ++){
+  console.log(musicbrainzId[i])
+}
+ 
+}
 
 function renderResultsById(resultsById) {
   console.log(resultsById);
