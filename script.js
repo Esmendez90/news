@@ -77,7 +77,20 @@ function renderData(attractions) {
     let genre = getGenreName(attractions[i].classifications[0].genre);
 
     let externallinks = getExternalLinks(attractions[i].externalLinks);
-   
+
+    let id2;
+
+    if (
+      externallinks.musicBrainzId &&
+      externallinks.musicBrainzId != "undefined"
+    ) {
+      console.log(externallinks.musicBrainzId);
+      id2 = `<a href=https://musicbrainz.org/artist/${externallinks.musicBrainzId}><button>Musicbrainz</button></a>`;
+    } else {
+      console.log("Id undefined");
+      id2 = `<a style=display:none; href=><button>Musicbrainz</button></a>`;
+    }
+
     $(".wrapper").append(`
     <div class="slides">
     <div class="classifications-container">
@@ -88,9 +101,13 @@ function renderData(attractions) {
         attractions[i].id
       } class="see-more-btn" style="display:${btnDisplay}">See more</button>
 
+      ${id2}
+
         <img src=${attractions[i].images[0].url} alt="photo of event">
         <div class="externalLinks-container">
-          <ul class="externalLinks-ul-container">${externallinks}</ul>        
+          <ul class="externalLinks-ul-container">${
+            externallinks.links
+          }</ul>        
         </div>  
         <div class="title-text">       
           <span style="margin-right: 10px;"></span>${attractions[
@@ -100,9 +117,7 @@ function renderData(attractions) {
         </div>
     </div>
     `);
-    
   }
-  
 }
 
 function getBtnDisplayProp(btnDisplayProp) {
@@ -141,7 +156,8 @@ function getGenreName(genrenames) {
 function getExternalLinks(externallinks) {
   if (externallinks) {
     let links = [];
-    
+    let musicBrainzId;
+
     for (const property in externallinks) {
       let propertyClassName = "";
       let liClassName = "";
@@ -155,7 +171,8 @@ function getExternalLinks(externallinks) {
       } else if (`${property}` === "musicbrainz") {
         propertyClassName = `musicbrainz`;
         liClassName = `style= display:none`;
-        handleMusicBrainz(`${externallinks[property][0].id}`);
+        musicBrainzId = `${externallinks[property][0].id}`;
+        //handleMusicBrainz(`${externallinks[property][0].id}`);
       } else {
         propertyClassName = `fa-brands fa-${property}`;
         liClassName = `class= externalLink-item`;
@@ -166,18 +183,19 @@ function getExternalLinks(externallinks) {
     }
 
     links = links.toString().split(",").join(" ");
-    return links;
+    return { links, musicBrainzId };
   } else {
     return "";
   }
 }
 
 function handleMusicBrainz(musicbrainzId) {
-//console.log(musicbrainzId);
-for (let i = 0; i < musicbrainzId.length; i ++){
-  console.log(musicbrainzId[i])
-}
- 
+  let ids = [];
+  ids.push(musicbrainzId);
+  //console.log(ids);
+  ids.forEach((element) => {
+    console.log(`<a>${element}</a>`);
+  });
 }
 
 function renderResultsById(resultsById) {
