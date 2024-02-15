@@ -91,16 +91,11 @@ function renderData(attractions) {
     </div>
       <button id=${
         attractions[i].id
-      } class="see-more-btn" style="display:${btnDisplay}">See more</button>
-
-      ${musicBrainsArtistId}
-
-        <img src=${attractions[i].images[0].url} alt="photo of event">
-        <div class="externalLinks-container">
-        
-        
-${ulLinkElement}
-
+      } class="see-more-btn" style="display:${btnDisplay}" type="button">See more</button>
+          ${musicBrainsArtistId}
+          <img src=${attractions[i].images[0].url} alt="photo of event">
+        <div class="externalLinks-container">       
+          ${ulLinkElement}     
         </div>  
         <div class="title-text">       
           <span style="margin-right: 10px;"></span>${attractions[
@@ -147,7 +142,6 @@ function getGenreName(genrenames) {
 }
 
 function getExternalLinks(externallinks) {
-  console.log("hello", typeof externallinks);
   if (typeof externallinks == "object") {
     let links = [];
     let musicBrainzId;
@@ -166,7 +160,6 @@ function getExternalLinks(externallinks) {
         propertyClassName = `musicbrainz`;
         liClassName = `style= display:none`;
         musicBrainzId = `${externallinks[property][0].id}`;
-        //handleMusicBrainz(`${externallinks[property][0].id}`);
       } else {
         propertyClassName = `fa-brands fa-${property}`;
         liClassName = `class= externalLink-item`;
@@ -178,16 +171,16 @@ function getExternalLinks(externallinks) {
 
     links = links.toString().split(",").join(" ");
     return { links, musicBrainzId };
-  } else  {
+  } else {
     return "";
   }
 }
 
 function getMusicBrainzArtistId(msArtistId) {
+  
   if (msArtistId && msArtistId != "undefined") {
-    return `<a href=https://musicbrainz.org/artist/${msArtistId.musicBrainzId}><button type="button">Musicbrainz</button></a>`;
+    return `<a href=https://musicbrainz.org/artist/${msArtistId} target='_blank'><img src='./images/musicbrainz-img.png' class='musicbrainz-icon' alt='music brainz icon'></a>`;
   } else {
-    console.log("Id undefined");
     return `<a style=display:none; href=><button type="button">Musicbrainz</button></a>`;
   }
 }

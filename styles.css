@@ -88,6 +88,9 @@ button {
 .fa-wand-magic-sparkles:hover {
   color: #e91e63;
 }
+
+
+
 input,
 button,
 .slides,
@@ -226,6 +229,17 @@ button,
   width: 100%;
   height: 240px;
 }
+
+.musicbrainz-icon {
+  height: 20px !important;
+  width: auto !important;
+  margin: 0 !important;
+  position: absolute;
+  bottom: 37%;
+  right: 0;
+  background-color: #06060654;
+}
+
 .title-text {
   position: absolute;
   bottom: 0;
