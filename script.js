@@ -31,10 +31,10 @@ function getResults() {
         handleAnimation();
         handleClasses(response.data._embedded.attractions);
       }
-    })
-    .catch((error) => {
-      console.log(error);
     });
+  // .catch((error) => {
+  //   console.log(error);
+  // });
 }
 
 function handleClasses(attractions) {
@@ -78,18 +78,10 @@ function renderData(attractions) {
 
     let externallinks = getExternalLinks(attractions[i].externalLinks);
 
-    let id2;
-
-    if (
-      externallinks.musicBrainzId &&
-      externallinks.musicBrainzId != "undefined"
-    ) {
-      console.log(externallinks.musicBrainzId);
-      id2 = `<a href=https://musicbrainz.org/artist/${externallinks.musicBrainzId}><button>Musicbrainz</button></a>`;
-    } else {
-      console.log("Id undefined");
-      id2 = `<a style=display:none; href=><button>Musicbrainz</button></a>`;
-    }
+    let ulLinkElement = handleUlLinkElement(externallinks.links);
+    let musicBrainsArtistId = getMusicBrainzArtistId(
+      externallinks.musicBrainzId
+    );
 
     $(".wrapper").append(`
     <div class="slides">
@@ -101,13 +93,14 @@ function renderData(attractions) {
         attractions[i].id
       } class="see-more-btn" style="display:${btnDisplay}">See more</button>
 
-      ${id2}
+      ${musicBrainsArtistId}
 
         <img src=${attractions[i].images[0].url} alt="photo of event">
         <div class="externalLinks-container">
-          <ul class="externalLinks-ul-container">${
-            externallinks.links
-          }</ul>        
+        
+        
+${ulLinkElement}
+
         </div>  
         <div class="title-text">       
           <span style="margin-right: 10px;"></span>${attractions[
@@ -154,7 +147,8 @@ function getGenreName(genrenames) {
 }
 
 function getExternalLinks(externallinks) {
-  if (externallinks) {
+  console.log("hello", typeof externallinks);
+  if (typeof externallinks == "object") {
     let links = [];
     let musicBrainzId;
 
@@ -184,18 +178,26 @@ function getExternalLinks(externallinks) {
 
     links = links.toString().split(",").join(" ");
     return { links, musicBrainzId };
-  } else {
+  } else  {
     return "";
   }
 }
 
-function handleMusicBrainz(musicbrainzId) {
-  let ids = [];
-  ids.push(musicbrainzId);
-  //console.log(ids);
-  ids.forEach((element) => {
-    console.log(`<a>${element}</a>`);
-  });
+function getMusicBrainzArtistId(msArtistId) {
+  if (msArtistId && msArtistId != "undefined") {
+    return `<a href=https://musicbrainz.org/artist/${msArtistId.musicBrainzId}><button type="button">Musicbrainz</button></a>`;
+  } else {
+    console.log("Id undefined");
+    return `<a style=display:none; href=><button type="button">Musicbrainz</button></a>`;
+  }
+}
+
+function handleUlLinkElement(links) {
+  if (links && links != undefined) {
+    return `<ul class="externalLinks-ul-container">${links}</ul>`;
+  } else if (links == undefined) {
+    return "";
+  }
 }
 
 function renderResultsById(resultsById) {
