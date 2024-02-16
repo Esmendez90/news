@@ -158,6 +158,10 @@ button,
   height: 0px;
   margin: auto;
 }
+
+.wrapper > .slides:last-child {
+  margin-bottom: 100px;
+}
 .see-more-btn {
   background-color: #808080b3;
   width: 87px;
@@ -320,7 +324,7 @@ footer img {
     transform: translateY(320%);
   }
   .move-form .nav-bar {
-    top: -2%;
+    top: -5%;
   }
   .wrapper {
     display: inline-block;
@@ -361,33 +365,33 @@ footer img {
     margin-top: 45px;
   }
   .slides {
-    width: 49% !important;
-    display: inline-flex !important;
+    width: 49%;
+    display: inline-flex;
   }
 }
 
 @media screen and (min-width: 992px) {
   .slides {
-    width: 20%;
+    width: 32%;
   }
-  .wrapper > .slides:hover {
+  /* .wrapper > .slides:hover {
     width: 21%;
     height: 241px;
-  }
+  } */
   .move-form .nav-bar {
-    top: -3%;
+    top: -6%;
   }
-  .wrapper > .slides:last-child {
+  /* .wrapper > .slides:last-child {
     margin-bottom: 100px;
-  }
+  } */
 }
 @media screen and (min-width: 1200px) {
   .slides {
-    width: 17%;
+    width: 24%;
   }
-  .wrapper > .slides:hover {
+  /* .wrapper > .slides:hover {
     width: 18%;
-  }
+  } */
 }
 
 /* ========= Dinamycally added attributes with animation ============ */

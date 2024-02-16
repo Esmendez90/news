@@ -31,10 +31,10 @@ function getResults() {
         handleAnimation();
         handleClasses(response.data._embedded.attractions);
       }
+    })
+    .catch((error) => {
+      console.log(error);
     });
-  // .catch((error) => {
-  //   console.log(error);
-  // });
 }
 
 function handleClasses(attractions) {
@@ -91,7 +91,7 @@ function renderData(attractions) {
     </div>
       <button id=${
         attractions[i].id
-        } class="see-more-btn" style="display:${btnDisplay}" type="button">
+      } class="see-more-btn" style="display:${btnDisplay}" type="button">
         See more
       </button>
       ${musicBrainsArtistId}
@@ -144,6 +144,8 @@ function getGenreName(genrenames) {
 }
 
 function getExternalLinks(externallinks) {
+  // handles the external links and returns an li element for each external link
+  // also returns musicbrainz artist id
   if (typeof externallinks == "object") {
     let links = [];
     let musicBrainzId;
@@ -179,7 +181,7 @@ function getExternalLinks(externallinks) {
 }
 
 function getMusicBrainzArtistId(msArtistId) {
-  
+  // anchor tag that will redirect to musicbrainz site with artist id
   if (msArtistId && msArtistId != "undefined") {
     return `<a href=https://musicbrainz.org/artist/${msArtistId} target='_blank'><img src='./images/musicbrainz-img.png' class='musicbrainz-icon' alt='music brainz icon'></a>`;
   } else {
@@ -188,6 +190,7 @@ function getMusicBrainzArtistId(msArtistId) {
 }
 
 function handleUlLinkElement(links) {
+  // ul element display property. if there are no external links this element should not display
   if (links && links != undefined) {
     return `<ul class="externalLinks-ul-container">${links}</ul>`;
   } else if (links == undefined) {
@@ -227,18 +230,19 @@ function renderResultsById(resultsById) {
     $(".see-more-wrapper").append(`
     <div class="slides">
         <div class="title-text">
-       <p>${resultsById[i].name.toUpperCase()}</p>
-       <p style="font-weight:100;">${timeZone}</p>
-       <p style="font-weight:100;">${resultsById[i].dates.start.localDate}</p>
-    
-       <p style="font-weight:100;">${localTime}</p>
-       
+          <p>${resultsById[i].name.toUpperCase()}</p>
+          <p style="font-weight:100;">${timeZone}</p>
+          <p style="font-weight:100;">${resultsById[i].dates.start.localDate}</p>
+          <p style="font-weight:100;">${localTime}</p>
           <p style="width: fit-content;
-          padding: 5px;
-          background: #000000e8;
-          border-radius: 5px; float:right;"><a href=${
-            resultsById[i].url
-          } target="_blank">Tickets</a></p>
+            padding: 5px;
+            background: #000000e8;
+            border-radius: 5px; float:right;">
+            <a href=${
+              resultsById[i].url
+             } target="_blank">Tickets
+            </a>
+          </p>
         </div>
     </div>
     `);
@@ -260,7 +264,7 @@ function getResultsById(id) {
       }
     })
     .catch((error) => {
-      console.log(error);
+      console.log("Error description", error);
     });
 }
 // Dynamic button, get results by Id
