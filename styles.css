@@ -160,7 +160,7 @@ button,
 }
 
 .wrapper > .slides:last-child {
-  margin-bottom: 100px;
+  margin-bottom: 100px !important;
 }
 .see-more-btn {
   background-color: #808080b3;
@@ -379,7 +379,7 @@ footer img {
     height: 241px;
   } */
   .move-form .nav-bar {
-    top: -6%;
+    top: -3%;
   }
   /* .wrapper > .slides:last-child {
     margin-bottom: 100px;

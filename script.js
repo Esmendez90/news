@@ -85,15 +85,17 @@ function renderData(attractions) {
 
     $(".wrapper").append(`
     <div class="slides">
-    <div class="classifications-container">
-      <p>${segmentName}</p>
-      <p>${genre}</p>
-    </div>
+      <div class="classifications-container">
+        <p>${segmentName}</p>
+        <p>${genre}</p>
+      </div>
+ 
       <button id=${
-        attractions[i].id
-      } class="see-more-btn" style="display:${btnDisplay}" type="button">
-        See more
+         attractions[i].id
+        } class="see-more-btn" style="display:${btnDisplay}" type="button">
+        See more 
       </button>
+  
       ${musicBrainsArtistId}
       <img src=${attractions[i].images[0].url} alt="photo of event">
       <div class="externalLinks-container">       
@@ -270,7 +272,7 @@ function getResultsById(id) {
 // Dynamic button, get results by Id
 $(document).on("click", ".see-more-btn", function (e) {
   e.preventDefault();
-  getResultsById(e.target.id);
+    getResultsById(e.target.id);
 });
 
 // Dynamic button, x mark
