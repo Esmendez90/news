@@ -87,22 +87,24 @@ function renderData(attractions) {
     <div class="slides">
     <div class="classifications-container">
       <p>${segmentName}</p>
-    <p>${genre}</p>
+      <p>${genre}</p>
     </div>
       <button id=${
         attractions[i].id
-      } class="see-more-btn" style="display:${btnDisplay}" type="button">See more</button>
-          ${musicBrainsArtistId}
-          <img src=${attractions[i].images[0].url} alt="photo of event">
-        <div class="externalLinks-container">       
+        } class="see-more-btn" style="display:${btnDisplay}" type="button">
+        See more
+      </button>
+      ${musicBrainsArtistId}
+      <img src=${attractions[i].images[0].url} alt="photo of event">
+      <div class="externalLinks-container">       
           ${ulLinkElement}     
-        </div>  
-        <div class="title-text">       
+      </div>  
+      <div class="title-text">       
           <span style="margin-right: 10px;"></span>${attractions[
             i
           ].name.toUpperCase()}
           <span><a href=${attractions[i].url} target="_blank">Tickets</a></span>
-        </div>
+      </div>
     </div>
     `);
   }
