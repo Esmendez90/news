@@ -152,6 +152,7 @@ button,
 }
 .results-text-2 {
   margin: 15px;
+  color: black;
 }
 .wrapper {
   width: 90%;
@@ -173,8 +174,11 @@ button,
 }
 .wrapper-container {
   display: none;
-  position: relative;
-  background-color: black;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #fbfbfb;;
   padding: 10px 15px;
 }
 .fa-xmark {
@@ -186,9 +190,9 @@ button,
 }
 .see-more-wrapper {
   display: none;
-  background-color: #070707a5;
-  padding-top: 4rem;
-  padding-bottom: 4rem;
+  background-color: #07070717;
+  /* padding-top: 0;
+  padding-bottom: 1rem; */
   margin-top: 15px;
 }
 .see-more-wrapper .slides {
@@ -202,6 +206,7 @@ button,
   margin: auto;
   background-color: white;
   color: #222121;
+  border: 0.5px #e7e3e3 solid;
   border-radius: 5px;
   padding: 8px;
   font-weight: bold;
